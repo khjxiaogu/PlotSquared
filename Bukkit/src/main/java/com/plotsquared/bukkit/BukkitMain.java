@@ -64,7 +64,7 @@ import com.plotsquared.bukkit.uuid.OfflinePlayerUUIDService;
 import com.plotsquared.bukkit.uuid.PaperUUIDService;
 import com.plotsquared.bukkit.uuid.SQLiteUUIDService;
 import com.plotsquared.bukkit.uuid.SquirrelIdUUIDService;
-import com.plotsquared.core.IPlotMain;
+import com.plotsquared.core.AllPlotMain;
 import com.plotsquared.core.PlotSquared;
 import com.plotsquared.core.backup.BackupManager;
 import com.plotsquared.core.backup.NullBackupManager;
@@ -165,7 +165,7 @@ import static com.plotsquared.core.util.PremiumVerification.getResourceID;
 import static com.plotsquared.core.util.PremiumVerification.getUserID;
 import static com.plotsquared.core.util.ReflectionUtils.getRefClass;
 
-public final class BukkitMain extends JavaPlugin implements Listener, IPlotMain<Player> {
+public final class BukkitMain extends JavaPlugin implements Listener, AllPlotMain<Player> {
 
     private static final int BSTATS_ID = 1404;
     @Getter private static WorldEdit worldEdit;

@@ -143,7 +143,7 @@ public class PlotSquared {
     private static final Set<Plot> EMPTY_SET = Collections.unmodifiableSet(Collections.emptySet());
     private static PlotSquared instance;
     // Implementation
-    public final IPlotMain<?> IMP;
+    public final AllPlotMain<?> IMP;
     // Current thread
     private final Thread thread;
     // UUID pipelines
@@ -178,18 +178,18 @@ public class PlotSquared {
     /**
      * Initialize PlotSquared with the desired Implementation class.
      *
-     * @param iPlotMain Implementation of {@link IPlotMain} used
+     * @param AllPlotMain Implementation of {@link AllPlotMain} used
      * @param platform  The platform being used
      */
-    public PlotSquared(final IPlotMain iPlotMain, final String platform) {
+    public PlotSquared(final AllPlotMain AllPlotMain, final String platform) {
         if (instance != null) {
             throw new IllegalStateException("Cannot re-initialize the PlotSquared singleton");
         }
         instance = this;
 
         this.thread = Thread.currentThread();
-        this.IMP = iPlotMain;
-        this.logger = iPlotMain;
+        this.IMP = AllPlotMain;
+        this.logger = AllPlotMain;
         Settings.PLATFORM = platform;
 
         //
@@ -395,7 +395,7 @@ public class PlotSquared {
         return PlotSquared.instance;
     }
 
-    @NotNull public static IPlotMain<?> imp() {
+    @NotNull public static AllPlotMain<?> imp() {
         if (instance != null && instance.IMP != null) {
             return instance.IMP;
         }
@@ -403,10 +403,10 @@ public class PlotSquared {
     }
 
     /**
-     * Log a message to the IPlotMain logger.
+     * Log a message to the AllPlotMain logger.
      *
      * @param message Message to log
-     * @see IPlotMain#log(String)
+     * @see AllPlotMain#log(String)
      */
     public static void log(Object message) {
         if (message == null || (message instanceof Caption ?
@@ -422,10 +422,10 @@ public class PlotSquared {
     }
 
     /**
-     * Log a message to the IPlotMain logger.
+     * Log a message to the AllPlotMain logger.
      *
      * @param message Message to log
-     * @see IPlotMain#log(String)
+     * @see AllPlotMain#log(String)
      */
     public static void debug(@Nullable Object message) {
         if (Settings.DEBUG) {
