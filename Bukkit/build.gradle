@@ -11,11 +11,11 @@ repositories {
         name = "papermc"
         url = "https://papermc.io/repo/repository/maven-public/"
     }
+	maven { url = "https://repo.extendedclip.com/content/repositories/placeholderapi/" }
+	maven { url = "https://ci.athion.net/job/Hyperverse/222/maven-repository/repository/" }
     maven { url = "https://ci.ender.zone/plugin/repository/everything/" }
-    maven { url = "https://mvn.intellectualsites.com/content/repositories/releases" }
-    maven { url = "https://mvn.intellectualsites.com/content/repositories/thirdparty"}
-    maven { url = "https://mvn.intellectualsites.com/content/repositories/snapshots" }
-    maven { url = "http://repo.mvdw-software.be/content/groups/public/" }
+    maven { url = "https://maven.enginehub.org/repo/" }
+	maven { url = "https://repo.phoenix616.dev/" }
     mavenLocal()
 }
 
@@ -39,14 +39,14 @@ dependencies {
     implementation("net.ess3:EssentialsX:2.18.0") {
         exclude(group: "io.papermc", module: "paperlib")
     }
-    compile("se.hyperver.hyperverse:Core:0.6.0-SNAPSHOT"){ transitive = false }
-    compile('com.sk89q:squirrelid:1.0.0-SNAPSHOT'){ transitive = false }
-    compile('be.maximvdw:MVdWPlaceholderAPI:3.1.1'){ transitive = false }
-    implementation("org.incendo.serverlib:ServerLib:2.2.0")
+    compile("se.hyperver.hyperverse:Core:0.10.0-SNAPSHOT"){ transitive = false }
+    compile('org.enginehub:squirrelid:0.3.0'){ transitive = false }
+    compile('me.clip:placeholderapi:2.10.6'){ transitive = false }
+    implementation("org.incendo.serverlib:ServerLib:2.2.1")
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 12
+targetCompatibility = 12
 
 processResources {
     from("src/main/resources") {
@@ -99,15 +99,15 @@ shadowJar {
         include(dependency("io.papermc:paperlib:1.0.5"))
         include(dependency("net.kyori:text-adapter-bukkit:3.0.3"))
         include(dependency("org.bstats:bstats-bukkit:1.7"))
-        include(dependency("org.khelekore:prtree:1.7.0-SNAPSHOT"))
-        include(dependency("com.sk89q:squirrelid:1.0.0-SNAPSHOT"))
-        include(dependency("com.intellectualsites.paster:Paster:1.0.2-SNAPSHOT"))
-        include(dependency("org.incendo.serverlib:ServerLib:2.2.0"))
+        include(dependency("org.khelekore:prtree:1.7.0"))
+        include(dependency("org.enginehub:squirrelid:0.3.0"))
+        include(dependency("com.intellectualsites.paster:Paster:1.1.1"))
+        include(dependency("org.incendo.serverlib:ServerLib:2.2.1"))
     }
     relocate('net.kyori.text', 'com.plotsquared.formatting.text')
     relocate("io.papermc.lib", "com.plotsquared.bukkit.paperlib")
     relocate("org.bstats", "com.plotsquared.metrics")
-    relocate('com.sk89q.squirrelid', 'com.plotsquared.squirrelid')
+    relocate('org.enginehub.squirrelid', 'com.plotsquared.squirrelid')
     relocate('org.khelekore.prtree', 'com.plotsquared.prtree')
     relocate('com.intellectualsites.paster', 'com.plotsquared.core.paster')
     relocate('org.incendo.serverlib', 'com.plotsquared.bukkit')

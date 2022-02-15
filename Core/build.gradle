@@ -1,6 +1,13 @@
 repositories {
+	mavenCentral()
+	
+	maven { url = "https://oss.sonatype.org/content/repositories/snapshots/"}
+	maven { url = "https://repo.clojars.org/" }
+    maven { url = "https://s01.oss.sonatype.org/content/repositories/snapshots"}
+    maven { url = "https://maven.enginehub.org/repo/" }
     maven { url = "https://jitpack.io" }
-    maven { url = "https://mvn.intellectualsites.com/content/repositories/snapshots" }
+    
+	
 }
 def textVersion = "3.0.2"
 
@@ -17,12 +24,12 @@ dependencies {
     testAnnotationProcessor("org.projectlombok:lombok:1.18.8")
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.4.0")
     implementation("org.jetbrains:annotations:20.1.0")
-    implementation("org.khelekore:prtree:1.7.0-SNAPSHOT")
-    implementation("com.intellectualsites.paster:Paster:1.0.2-SNAPSHOT"){ transitive = false }
+    implementation('org.khelekore:prtree:1.7.0')
+    implementation("com.intellectualsites.paster:Paster:1.1.1"){ transitive = false }
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 12
+targetCompatibility = 12
 
 processResources {
     from("src/main/resources") {
@@ -76,8 +83,8 @@ shadowJar {
         include(dependency("net.kyori:text-serializer-gson:3.0.2"))
         include(dependency("net.kyori:text-serializer-legacy:3.0.2"))
         include(dependency("net.kyori:text-serializer-plain:3.0.2"))
-        include(dependency("org.khelekore:prtree:1.7.0-SNAPSHOT"))
-        include(dependency("com.intellectualsites.paster:Paster:1.0.2-SNAPSHOT"))
+        include(dependency("org.khelekore:prtree:1.7.0"))
+        include(dependency("com.intellectualsites.paster:Paster:1.1.1"))
     }
     relocate('net.kyori.text', 'com.plotsquared.formatting.text')
     relocate("org.json", "com.plotsquared.json") {
